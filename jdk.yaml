@@ -1,0 +1,37 @@
+kind: List
+apiVersion: v1
+items:
+
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    labels:
+      app: rhel7-jdk
+    name: rhel7-jdk
+  spec: {}
+
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    labels:
+      app: rhel7-jdk
+    name: rhel7-jdk
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: rhel7-jdk:v1.8
+    source:
+      type: Git
+      git:
+        uri: https://github.com/rbaumgar/rhel-jdk.git
+    strategy:
+      dockerStrategy:
+        from:
+          kind: ImageStreamTag
+          name: rhel7:latest
+      type: Docker
+    triggers:
+    - type: ConfigChange
+    - type: ImageChange
+imageChange: {}
