@@ -31,7 +31,7 @@ items:
     output:
       to:
         kind: ImageStreamTag
-        name: rhel7-jdk:v1.8
+        name: rhel7-jdk:v1.8.0
     source:
       type: Git
       git:
