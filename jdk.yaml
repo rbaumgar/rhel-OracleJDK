@@ -5,6 +5,17 @@ items:
 - kind: ImageStream
   apiVersion: v1
   metadata:
+    name: rhel7
+  spec:
+    tags:
+    - from:
+        kind: DockerImage
+        name: registry.access.redhat.com/rhel7:latest
+      name: latest
+
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
     labels:
       app: rhel7-jdk
     name: rhel7-jdk
