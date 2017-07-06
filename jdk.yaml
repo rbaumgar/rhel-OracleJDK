@@ -45,4 +45,4 @@ items:
     triggers:
     - type: ConfigChange
     - type: ImageChange
-imageChange: {}
+      imageChange: {}
