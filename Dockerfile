@@ -19,7 +19,7 @@ LABEL name="$IMAGE_NAME" \
       java_vendor="$JAVA_TYPE" \
       description="Base image with OracleJDK 8 on RHEL 7"
 
-ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-${JAVA_TYPE}
+ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-${JAVA_VENDOR}
 
 #         --enablerepo=rhel-7-server-extras-rpms \
 #         --enablerepo=rhel-7-server-optional-rpms \
@@ -30,7 +30,7 @@ RUN yum --disablerepo=* \
         --enablerepo=rhel-7-server-rpms \
         --enablerepo=rhel-7-server-thirdparty-oracle-java-rpms \
       install -y \
-      java-$JAVA_VERSION-$JAVA_TYPE-devel \
+      java-${JAVA_VERSION}-${JAVA_VENDOR}-devel \
     yum clean all && \
-    rpm -q  java-${JAVA_VERSION}-${JAVA_TYPE}-devel && \
+    rpm -q  java-${JAVA_VERSION}-${JAVA_VENDOR}-devel && \
     java -version
