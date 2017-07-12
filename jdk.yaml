@@ -17,25 +17,25 @@ items:
   apiVersion: v1
   metadata:
     labels:
-      app: rhel7-jdk
-    name: rhel7-jdk
+      app: rhel7-OracleJDK
+    name: rhel7-OracleJDK
   spec: {}
 
 - kind: BuildConfig
   apiVersion: v1
   metadata:
     labels:
-      app: rhel7-jdk
-    name: rhel7-jdk
+      app: rhel7-OracleJDK
+    name: rhel7-OacleJDK
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: rhel7-jdk:v1.8.0
+        name: rhel7-OracleJDK:v1.8.0
     source:
       type: Git
       git:
-        uri: https://github.com/rbaumgar/rhel-jdk.git
+        uri: https://github.com/rbaumgar/rhel-OracleJDK.git
     strategy:
       dockerStrategy:
         from:
