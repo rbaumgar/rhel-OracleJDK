@@ -17,21 +17,21 @@ items:
   apiVersion: v1
   metadata:
     labels:
-      app: rhel7-OracleJDK
-    name: rhel7-OracleJDK
+      app: rhel7-oraclejdk
+    name: rhel7-oraclejdk
   spec: {}
 
 - kind: BuildConfig
   apiVersion: v1
   metadata:
     labels:
-      app: rhel7-OracleJDK
-    name: rhel7-OacleJDK
+      app: rhel7-oraclejdk
+    name: rhel7-oraclejdk
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: rhel7-OracleJDK:v1.8.0
+        name: rhel7-oraclejdk:v1.8.0
     source:
       type: Git
       git:
