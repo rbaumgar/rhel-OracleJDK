@@ -23,5 +23,6 @@ LABEL name="$IMAGE_NAME" \
 RUN curl -C - -L -O -# \
     -H "Cookie: oraclelicense=accept-securebackup-cookie" \
     ${ORACLE_JAVA_DOWNLOAD_URL} && \
-    rpm -ivh jdk-8u161-linux-x64.rpm && \
-    java -version
+    rpm -ivh ./jdk-8u161-linux-x64.rpm && \
+    java -version && \
+    rm -f ./jdk-8u161-linux-x64.rpm
