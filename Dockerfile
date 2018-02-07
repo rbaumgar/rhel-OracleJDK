@@ -6,10 +6,11 @@ MAINTAINER Robert Baumgartner <robert.bumgartner@redhat.com>
 
 # Environment variables
 ENV IMAGE_NAME="rhel/jdk" \
-    IMAGE_VERSION="1.0" \
-    JAVA_HOME="/usr/lib/jvm/java-1.8.0" \
+    IMAGE_VERSION="1.1" \
+    JAVA_HOME="/usr/java/default" \
     JAVA_VENDOR="oracle" \
-    JAVA_VERSION="1.8.0" 
+    JAVA_VERSION="1.8.0" \
+    ORACLE_JAVA_DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.rpm
 
 # Labels
 LABEL name="$IMAGE_NAME" \
@@ -21,16 +22,8 @@ LABEL name="$IMAGE_NAME" \
 
 ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-${JAVA_VENDOR}
 
-#         --enablerepo=rhel-7-server-extras-rpms \
-#         --enablerepo=rhel-7-server-optional-rpms \
-#       java-${JAVA_VERSION}-${JAVA_TYPE}-jdbc && \
-
-
-RUN yum --disablerepo=* \
-        --enablerepo=rhel-7-server-rpms \
-        --enablerepo=rhel-7-server-thirdparty-oracle-java-rpms \
-      install -y \
-      java-${JAVA_VERSION}-${JAVA_VENDOR}-devel \
-    yum clean all && \
-    rpm -q  java-${JAVA_VERSION}-${JAVA_VENDOR}-devel && \
+RUN curl -C - -L -O -# \
+    -H "Cookie: oraclelicense=accept-securebackup-cookie" \
+    ${ORACLE_JAVA_DOWNLOAD_URL} && \
+    rpm -ivh jdk-8u161-linux-x64.rpm && \
     java -version
