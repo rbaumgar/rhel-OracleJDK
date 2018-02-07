@@ -20,8 +20,6 @@ LABEL name="$IMAGE_NAME" \
       java_vendor="$JAVA_TYPE" \
       description="Base image with OracleJDK 8 on RHEL 7"
 
-ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-${JAVA_VENDOR}
-
 RUN curl -C - -L -O -# \
     -H "Cookie: oraclelicense=accept-securebackup-cookie" \
     ${ORACLE_JAVA_DOWNLOAD_URL} && \
