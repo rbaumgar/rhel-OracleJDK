@@ -8,7 +8,7 @@ with the following command you will see the build
 
     oc get pod
     
-The logile can be streamed with
+The logfile can be streamed with
 
     oc log -f rhel7-oraclejdk-1-build
 
