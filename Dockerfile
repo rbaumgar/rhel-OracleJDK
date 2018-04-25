@@ -10,7 +10,7 @@ ENV IMAGE_NAME="rhel/jdk" \
     JAVA_HOME="/usr/java/default" \
     JAVA_VENDOR="oracle" \
     JAVA_VERSION="1.8.0" \
-    ORACLE_JAVA_DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.rpm
+    ORACLE_JAVA_DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.rpm
 
 # Labels
 LABEL name="$IMAGE_NAME" \
@@ -23,6 +23,6 @@ LABEL name="$IMAGE_NAME" \
 RUN curl -C - -L -O -# \
     -H "Cookie: oraclelicense=accept-securebackup-cookie" \
     ${ORACLE_JAVA_DOWNLOAD_URL} && \
-    rpm -ivh ./jdk-8u161-linux-x64.rpm && \
+    rpm -ivh ./jdk-8u171-linux-x64.rpm && \
     java -version && \
-    rm -f ./jdk-8u161-linux-x64.rpm
+    rm -f ./jdk-8u171-linux-x64.rpm
